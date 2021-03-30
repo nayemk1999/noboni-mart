@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Header.css'
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg"  >
+        <div className="container">
+            <Navbar collapseOnSelect expand="lg"  >
                 <Navbar.Brand className="logo" href="/home">NoboniMart</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto"/>
+                    <Nav className="mr-auto" />
                     <Nav>
                         <Nav.Link><Link className="link" to='/home'>Home</Link></Nav.Link>
                         <Nav.Link> <Link className="link" to='/destination'>Destination</Link></Nav.Link>
@@ -25,6 +26,8 @@ const Header = () => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+        </div>
+
     );
 };
 

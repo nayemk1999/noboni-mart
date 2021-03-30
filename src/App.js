@@ -8,11 +8,13 @@ import {
 } from "react-router-dom";
 import Home from './component/Home/Home';
 import AdminPanel from './component/AdminPanel/AdminPanel';
+import Header from './component/Header/Header';
 
 function App() {
 
   return (
     <Router>
+      
       <Switch>
         <Route path="/home">
           <Home />

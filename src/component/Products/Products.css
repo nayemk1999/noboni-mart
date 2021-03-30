@@ -1,0 +1,38 @@
+.noboni-card {
+    border: 0 !important;
+}
+
+.noboni-card img {
+    /* background-color: #F1F1F1 !important; */
+    /* height: 300px; */
+    /* padding: 30px; */
+    border-radius: 15px;
+}
+
+.button-bg {
+    background-color: #90AB29 !important;
+    padding: 10px 15px !important;
+    color: white !important;
+    font-size: 15px;
+    border: 0 !important;
+}
+
+span {
+    color: #FABE4C;
+    font-size: 30px;
+}
+
+h5 {
+    color: #363958;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+}
+
+p {
+    padding: 5px;
+}
+
+.footer-contain {
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
