@@ -18,20 +18,24 @@ const Home = () => {
     }, [])
     return (
         <div className="container">
-            {loading ? <div className="row">
-                <Header></Header>
-                {
-                    products.map(product => <Products
-                        product={product}
-                        key={product._id}
-                    ></Products>)
-                }
-            </div> :
+            {loading ?
+                <div>
+                    <Header></Header>
+                    <div className="row">
+                        {
+                            products.map(product => <Products
+                                product={product}
+                                key={product._id}
+                            ></Products>)
+                        }
+                    </div>
+
+                </div>
+                :
                 <div className="text-center">
-                    <div class="spinner-border text-success" style={{width: '3rem', height: '3rem', marginTop:'150px'}} role="status">
+                    <div class="spinner-border text-success" style={{ width: '3rem', height: '3rem', marginTop: '150px' }} role="status">
                     </div>
                 </div>
-
             }
 
         </div>
