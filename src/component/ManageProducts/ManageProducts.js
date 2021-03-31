@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { UserContext } from '../../App';
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false);
+    const [loggedInUser, setLoggedInUser]= useContext(UserContext)
 
     useEffect(() => {
-        const url = `http://localhost:3005/products`;
+        const url = 'http://localhost:3005/manageProducts?email=' + loggedInUser.email;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -19,13 +21,19 @@ const ManageProducts = () => {
 
     const deletedProduct = (id) =>{
         const url = `http://localhost:3005/product/${id}`
-        fetch(url)
+        fetch(url, {
+            method: 'DELETE'
+        })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if(data){
+                alert('SuccessFully Delete your Products from Database.')
+            }
+        })
     }
     return (
         <div>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">Product Name</th>

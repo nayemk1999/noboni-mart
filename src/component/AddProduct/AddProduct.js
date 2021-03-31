@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { UserContext } from '../../App';
 
 
-const AdminPanel = () => {
+const AddProduct = () => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [productImgURL, setProductImgURL] = useState('')
+    const [productImgURL, setProductImgURL] = useState('');
+    const [loggedInUser, setLoggedInUser]= useContext(UserContext)
 // Product upload mongodb database
     const onSubmit = product => {
         const newProduct = {
             name: product.name,
             wight: product.wight,
             price : product.price,
-            imgURL: productImgURL
+            imgURL: productImgURL,
+            email: loggedInUser.email
         }
         fetch('http://localhost:3005/addProducts', {
             method: 'POST', 
@@ -53,4 +56,4 @@ const AdminPanel = () => {
     );
 };
 
-export default AdminPanel;
+export default AddProduct;

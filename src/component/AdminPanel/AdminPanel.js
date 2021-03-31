@@ -6,6 +6,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import AddProduct from '../AddProduct/AddProduct';
 import ManageProducts from '../ManageProducts/ManageProducts';
 
 const AdminPanel = () => {
@@ -31,7 +32,7 @@ const AdminPanel = () => {
                         <ManageProducts />
                     </Route>
                     <Route path="/addProduct">
-                        <AdminPanel />
+                        <AddProduct></AddProduct>
                     </Route>
                 </Switch>
             </Router>
