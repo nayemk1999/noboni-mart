@@ -1,0 +1,16 @@
+.sidebar-contain {
+    background-color: rgb(47, 83, 32);
+    padding: 10px;
+    color: white;
+}
+
+.sideNav {
+    font-weight: bold !important;
+    font-size: 15px;
+    text-decoration: none !important;
+    color: white
+}
+
+.sideNav:hover {
+    color: crimson
+}

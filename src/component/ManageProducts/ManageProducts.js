@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { UserContext } from '../../App';
+import './ManageProducts.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import  {faTrash} from '@fortawesome/free-solid-svg-icons'
 
+<i class="fas fa-trash-alt"></i>
 const ManageProducts = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false);
-    const [loggedInUser, setLoggedInUser]= useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
     useEffect(() => {
         const url = 'http://localhost:3005/manageProducts?email=' + loggedInUser.email;
@@ -19,20 +23,21 @@ const ManageProducts = () => {
 
     }, [])
 
-    const deletedProduct = (id) =>{
+    const deletedProduct = (id) => {
         const url = `http://localhost:3005/product/${id}`
         fetch(url, {
             method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data){
-                alert('SuccessFully Delete your Products from Database.')
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    alert('SuccessFully Delete your Products from Database.')
+                }
+            })
     }
     return (
-        <div>
+        <div className="p-3 mt-2">
+            <h4>Manage Products</h4>
             <table className="table">
                 <thead>
                     <tr>
@@ -44,12 +49,12 @@ const ManageProducts = () => {
                 </thead>
                 <tbody>
                     {
-                        products.map(product => 
+                        products.map(product =>
                             <tr>
                                 <td>{product.name}</td>
                                 <td>{product.wight}</td>
-                                <td>${product.name}</td>
-                                <button onClick={() =>deletedProduct(product._id)}>D</button>
+                                <td>${product.price}</td>
+                                <button className='p-1' onClick={() => deletedProduct(product._id)}><FontAwesomeIcon icon={faTrash} /></button>
                             </tr>
                         )
                     }

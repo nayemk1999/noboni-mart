@@ -7,18 +7,15 @@ import Header from '../Header/Header';
 
 const CheckOut = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({})
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const { name, price} = product
-
-   
-
     useEffect(() => {
         const url = `http://localhost:3005/product/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [])
+    }, [id])
 
     const [orderDate, setOrderDate] = useState({
         orderDate: new Date()
@@ -27,14 +24,9 @@ const CheckOut = () => {
         userName: loggedInUser.displayName,
         email: loggedInUser.email
     })
-    const [orderProduct, setOrderProduct] = useState({
-        productName: product.name,
-        price: product.price,
-        wigth: product.wigth,
-        imgURL: product.imgURL
-    })
     const handleOrder = () => {
-        const orderInfo = {...signInUser, ...orderProduct, ...orderDate}
+        const orderInfo = {...signInUser, name: product.name, price: product.price, ...orderDate}
+        console.log(orderInfo);
         fetch('http://localhost:3005/addOrder', {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
@@ -50,7 +42,7 @@ const CheckOut = () => {
     return (
         <div className="container">
             <Header></Header>
-            <h1>CheckOut</h1>
+            <h3 className="fw-bold mt-5">CheckOut</h3>
             <table class="table">
                 <thead>
                     <tr>
@@ -66,7 +58,7 @@ const CheckOut = () => {
                         <td>$ {price}</td>
                     </tr>
                     <tr>
-                        <td colSpan="2">Total</td>
+                        <td colSpan="2" className='fw-bold fs-2'>Total</td>
                         <td>$ {price}</td>
                     </tr>
                 </tbody>

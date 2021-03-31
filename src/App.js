@@ -13,6 +13,9 @@ import { createContext, useState } from 'react';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import CheckOut from './component/CheckOut/CheckOut';
 import OrderMange from './component/OrderMange/OrderMange';
+import NotFound from './component/NotFound/NotFound';
+import ManageProducts from './component/ManageProducts/ManageProducts';
+import AddProduct from './component/AddProduct/AddProduct';
 
 export const UserContext = createContext()
 
@@ -31,15 +34,24 @@ function App() {
           <PrivateRoute path="/order">
             <OrderMange />
           </PrivateRoute>
+          <Route path="/manageProduct">
+            <AdminPanel />
+          </Route>
+          <Route path="/addProduct">
+            <AdminPanel/>
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
           <PrivateRoute path="/buy-product/:id">
             <CheckOut />
           </PrivateRoute>
-          
+
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </Router>

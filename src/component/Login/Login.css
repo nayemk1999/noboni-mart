@@ -1,0 +1,20 @@
+.login-form {
+    border: 1px solid gray;
+    border-radius: 15px;
+    font: 1em sans-serif;
+    font-weight: bold;
+    color: crimson;
+}
+
+.login-form button {
+    margin-left: 28%;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+}
+
+.login-form button:hover {
+    background-color: black;
+    color: white;
+}

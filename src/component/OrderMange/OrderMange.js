@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 
 const OrderMange = () => {
     const [orders, setOrders] = useState([]);
+    console.log(orders);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     console.log(orders);
     useEffect(() => {
@@ -26,11 +27,11 @@ const OrderMange = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(product => 
+                        orders.map(order => 
                             <tr>
-                                <td>{product.name}</td>
-                                <td>{product.price}</td>
-                                <td>{(new Date(product.orderDate).toDateString('dd/MM/yyyy'))}</td>
+                                <td>{order.name}</td>
+                                <td>{order.price}</td>
+                                <td>{(new Date(order.orderDate).toDateString('dd/MM/yyyy'))}</td>
                             </tr>
                         )
                     }
