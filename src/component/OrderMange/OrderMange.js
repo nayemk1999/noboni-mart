@@ -6,7 +6,6 @@ const OrderMange = () => {
     const [orders, setOrders] = useState([]);
     console.log(orders);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    console.log(orders);
     useEffect(() => {
         fetch('https://noboni-mart.herokuapp.com/order?email=' + loggedInUser.email)
             .then(res => res.json())
@@ -16,9 +15,9 @@ const OrderMange = () => {
         <div className='container'>
             <Header></Header>
             <div>
-                <h2 className='text-center'>Your Order Details:</h2>
+                <h2 className="fw-bold mt-5 text-center" style={{color:'crimson'}}>Your Order Details:</h2>
                 <table className="table">
-                    <thead>
+                    <thead className="thead-dark">
                         <tr>
                             <th scope="col">Product Name</th>
                             <th scope="col">Price</th>
@@ -28,15 +27,16 @@ const OrderMange = () => {
                     <tbody>
                         {
                             orders.map(order =>
-                                <tr>
+                                <tr class="table-success">
                                     <td>{order.name}</td>
-                                    <td>{order.price}</td>
+                                    <td>$ {order.price}</td>
                                     <td>{(new Date(order.orderDate).toDateString('dd/MM/yyyy'))}</td>
                                 </tr>
                             )
                         }
                     </tbody>
                 </table>
+                <h2 className="fw-bold mt-5 text-center" style={{color:'black'}}>Total Your Order Items: <span className='text-danger'>{orders.length}</span></h2>
             </div>
         </div>
     );

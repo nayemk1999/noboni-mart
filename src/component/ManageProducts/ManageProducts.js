@@ -36,10 +36,10 @@ const ManageProducts = () => {
             })
     }
     return (
-        <div className="p-3 mt-2">
-            <h4>Manage Products</h4>
-            <table className="table">
-                <thead>
+        <div className="p-3 w-100 mt-2">
+            <h4>Manage Products:</h4>
+            <table className="table table-striped ">
+                <thead className='thead-dark'>
                     <tr>
                         <th scope="col">Product Name</th>
                         <th scope="col">Wight</th>
@@ -48,8 +48,8 @@ const ManageProducts = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        products.map(product =>
+                    {loading ?
+                        products.map(product => 
                             <tr>
                                 <td>{product.name}</td>
                                 <td>{product.wight}</td>
@@ -57,6 +57,11 @@ const ManageProducts = () => {
                                 <button className='p-1' onClick={() => deletedProduct(product._id)}><FontAwesomeIcon icon={faTrash} /></button>
                             </tr>
                         )
+                        :
+                        <div className="text-center">
+                            <div class="spinner-border text-danger" style={{ width: '3rem', height: '3rem', marginTop: '30%',marginLeft:'60%' }} role="status">
+                            </div>
+                        </div>
                     }
                 </tbody>
             </table>

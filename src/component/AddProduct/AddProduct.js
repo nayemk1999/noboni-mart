@@ -7,7 +7,7 @@ import './AddProduct.css'
 
 const AddProduct = () => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [productImgURL, setProductImgURL] = useState('');
+    const [productUpload, setProductUpload] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
     // Product upload mongodb database
@@ -16,7 +16,7 @@ const AddProduct = () => {
             name: product.name,
             wight: product.wight,
             price: product.price,
-            imgURL: productImgURL,
+            imgURL: productUpload.display_url,
             email: loggedInUser.email
         }
         fetch('https://noboni-mart.herokuapp.com/addProducts', {
@@ -38,7 +38,8 @@ const AddProduct = () => {
         imageData.append('image', event.target.files[0]);
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
-                setProductImgURL(response.data.data.display_url);
+                setProductUpload(response.data.data);
+                console.log(response.data.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -50,7 +51,7 @@ const AddProduct = () => {
             <form className=" p-3 mt-2 row" onSubmit={handleSubmit(onSubmit)}>
                 <div className="col-md-6">
                     <label>Product Name: </label>
-                    <input className="form-control" name="name" placeholder="Enter Name" ref={register({ required: true })} /> <br />
+                    <input className="form-control" name="name" placeholder="Enter Name" value={productUpload.title} ref={register({ required: true })} /> <br />
                     <label>Product wight: </label>
                     <input className="form-control" name="wight" placeholder="Enter wight" ref={register({ required: true })} /> <br />
                 </div>

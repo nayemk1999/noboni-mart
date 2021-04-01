@@ -42,9 +42,9 @@ const CheckOut = () => {
     return (
         <div className="container">
             <Header></Header>
-            <h3 className="fw-bold mt-5">CheckOut</h3>
-            <table class="table">
-                <thead>
+            <h2 className="fw-bold mt-5 text-center" style={{color:'crimson'}}>Check-Out</h2>
+            <table className="table ">
+                <thead className='thead-dark'>
                     <tr>
                         <th scope="col">Description</th>
                         <th scope="col">Quantity</th>
@@ -57,7 +57,7 @@ const CheckOut = () => {
                         <td>1</td>
                         <td>$ {price}</td>
                     </tr>
-                    <tr>
+                    <tr className="table-success">
                         <td colSpan="2" className='fw-bold fs-2'>Total</td>
                         <td>$ {price}</td>
                     </tr>

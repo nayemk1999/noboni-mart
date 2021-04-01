@@ -21,7 +21,7 @@ const Home = () => {
             {loading ?
                 <div>
                     <Header></Header>
-                    <div className="row">
+                    <div className="row mt-4">
                         {
                             products.map(product => <Products
                                 product={product}
@@ -29,7 +29,6 @@ const Home = () => {
                             ></Products>)
                         }
                     </div>
-
                 </div>
                 :
                 <div className="text-center">
