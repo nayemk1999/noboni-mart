@@ -9,9 +9,9 @@ const CheckOut = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({})
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    const { name, price} = product
+    const { name, price } = product
     useEffect(() => {
-        const url = `http://localhost:3005/product/${id}`
+        const url = `https://noboni-mart.herokuapp.com/product/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -20,24 +20,24 @@ const CheckOut = () => {
     const [orderDate, setOrderDate] = useState({
         orderDate: new Date()
     })
-    const[signInUser, setSignInUser] = useState({
+    const [signInUser, setSignInUser] = useState({
         userName: loggedInUser.displayName,
         email: loggedInUser.email
     })
     const handleOrder = () => {
-        const orderInfo = {...signInUser, name: product.name, price: product.price, ...orderDate}
+        const orderInfo = { ...signInUser, name: product.name, price: product.price, ...orderDate }
         console.log(orderInfo);
-        fetch('http://localhost:3005/addOrder', {
-            method:'POST',
-            headers: {'Content-Type': 'application/json'},
+        fetch('https://noboni-mart.herokuapp.com/addOrder', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderInfo)
         })
-        .then(res => {
-            if(res){
-                alert('Order SuccessFully, Thank You so much..!');
-            }
-        })
-        
+            .then(res => {
+                if (res) {
+                    alert('Order SuccessFully, Thank You so much..!');
+                }
+            })
+
     }
     return (
         <div className="container">
@@ -64,7 +64,7 @@ const CheckOut = () => {
                 </tbody>
             </table>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <Link  onClick ={handleOrder} className="btn btn-success me-md-2">CheckOut</Link>
+                <Link onClick={handleOrder} className="btn btn-success me-md-2">CheckOut</Link>
             </div>
         </div>
     );

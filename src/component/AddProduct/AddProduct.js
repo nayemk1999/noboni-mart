@@ -19,7 +19,7 @@ const AddProduct = () => {
             imgURL: productImgURL,
             email: loggedInUser.email
         }
-        fetch('http://localhost:3005/addProducts', {
+        fetch('https://noboni-mart.herokuapp.com/addProducts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct)

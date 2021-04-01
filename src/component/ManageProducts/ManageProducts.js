@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { UserContext } from '../../App';
 import './ManageProducts.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import  {faTrash} from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 <i class="fas fa-trash-alt"></i>
 const ManageProducts = () => {
@@ -13,7 +13,7 @@ const ManageProducts = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
     useEffect(() => {
-        const url = 'http://localhost:3005/manageProducts?email=' + loggedInUser.email;
+        const url = 'https://noboni-mart.herokuapp.com/manageProducts?email=' + loggedInUser.email;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -24,7 +24,7 @@ const ManageProducts = () => {
     }, [])
 
     const deletedProduct = (id) => {
-        const url = `http://localhost:3005/product/${id}`
+        const url = `https://noboni-mart.herokuapp.com/product/${id}`
         fetch(url, {
             method: 'DELETE'
         })

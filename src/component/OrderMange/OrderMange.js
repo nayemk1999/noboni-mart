@@ -8,35 +8,35 @@ const OrderMange = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     console.log(orders);
     useEffect(() => {
-        fetch('http://localhost:3005/order?email=' + loggedInUser.email)
-        .then(res => res.json())
-        .then(data => setOrders(data))
+        fetch('https://noboni-mart.herokuapp.com/order?email=' + loggedInUser.email)
+            .then(res => res.json())
+            .then(data => setOrders(data))
     }, [])
     return (
-        <div className ='container'>
+        <div className='container'>
             <Header></Header>
             <div>
                 <h2 className='text-center'>Your Order Details:</h2>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Order Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        orders.map(order => 
-                            <tr>
-                                <td>{order.name}</td>
-                                <td>{order.price}</td>
-                                <td>{(new Date(order.orderDate).toDateString('dd/MM/yyyy'))}</td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            orders.map(order =>
+                                <tr>
+                                    <td>{order.name}</td>
+                                    <td>{order.price}</td>
+                                    <td>{(new Date(order.orderDate).toDateString('dd/MM/yyyy'))}</td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     );

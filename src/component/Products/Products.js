@@ -1,9 +1,9 @@
 import React from 'react';
 import './Products.css'
 import { Link, useParams } from "react-router-dom";
-const Products = ({product}) => {
+const Products = ({ product }) => {
     const { id } = useParams();
-    const {name, price, imgURL, _id} = product
+    const { name, price, imgURL, _id } = product
 
     return (
         <div className="col-md-4">
@@ -16,7 +16,7 @@ const Products = ({product}) => {
                         <Link to={"/buy-product/" + _id} class="btn button-bg"><i class="fa fa-shopping-cart"
                             aria-hidden="true"></i>Buy Now</Link>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

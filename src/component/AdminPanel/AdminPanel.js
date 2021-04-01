@@ -11,7 +11,7 @@ import Home from '../Home/Home';
 import ManageProducts from '../ManageProducts/ManageProducts';
 import './AdminPanel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import  {faTasks, faPlus,faEdit} from '@fortawesome/free-solid-svg-icons'
+import { faTasks, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 
 const AdminPanel = () => {

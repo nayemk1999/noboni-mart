@@ -7,7 +7,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const url = `http://localhost:3005/products`;
+        const url = `https://noboni-mart.herokuapp.com/products`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
