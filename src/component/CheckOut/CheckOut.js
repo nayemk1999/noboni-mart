@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import Header from '../Header/Header';
@@ -8,6 +8,7 @@ import Header from '../Header/Header';
 const CheckOut = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({})
+    const history = useHistory();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const { name, price } = product
     useEffect(() => {
@@ -26,7 +27,6 @@ const CheckOut = () => {
     })
     const handleOrder = () => {
         const orderInfo = { ...signInUser, name: product.name, price: product.price, ...orderDate }
-        console.log(orderInfo);
         fetch('https://noboni-mart.herokuapp.com/addOrder', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -35,6 +35,7 @@ const CheckOut = () => {
             .then(res => {
                 if (res) {
                     alert('Order SuccessFully, Thank You so much..!');
+                    history.push('/order')
                 }
             })
 
