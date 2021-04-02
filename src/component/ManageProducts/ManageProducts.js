@@ -48,8 +48,8 @@ const ManageProducts = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {loading ?
-                        products.map(product => 
+                    {loading && products.length > 0 ?
+                        products.map(product =>
                             <tr>
                                 <td>{product.name}</td>
                                 <td>{product.wight}</td>
@@ -59,8 +59,11 @@ const ManageProducts = () => {
                         )
                         :
                         <div className="text-center">
-                            <div class="spinner-border text-danger" style={{ width: '3rem', height: '3rem', marginTop: '30%',marginLeft:'60%' }} role="status">
-                            </div>
+                            {loading ?
+                                <h4 className="mt-3 p-3 text-danger">You haven't any products yet. Please add product and come to this page.</h4>
+                                : <div class="spinner-border text-danger" style={{ width: '3rem', height: '3rem', marginTop: '30%', marginLeft: '60%' }} role="status">
+                                </div>
+                            }
                         </div>
                     }
                 </tbody>

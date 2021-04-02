@@ -13,13 +13,13 @@ const Header = () => {
                 <Nav className="mr-auto" />
                 <Nav>
                     <Nav.Link><Link className="link" to='/home'>Home</Link></Nav.Link>
-                    <Nav.Link> <Link className="link" to='/order'>Order</Link></Nav.Link>
-                    <Nav.Link> <Link className="link" to='/adminPanel'>Admin</Link></Nav.Link>
-                    <Nav.Link> <Link className="link" to='/deals'>Deals</Link></Nav.Link>
+                    <Nav.Link><Link className="link" to='/order'>Order</Link></Nav.Link>
+                    <Nav.Link><Link className="link" to='/adminPanel'>Admin</Link></Nav.Link>
+                    <Nav.Link><Link className="link" to='/deals'>Deals</Link></Nav.Link>
 
                     <Nav.Link>
                         {
-                            loggedInUser.email ? <Link className="log-link" to='/search-ride'>{loggedInUser.displayName}</Link>
+                            loggedInUser.email ? <Link className="log-link" to='/order'>{loggedInUser.displayName}</Link>
                                 : <Link className="log-link" to='/login'>Login</Link>
                         }
                     </Nav.Link>
