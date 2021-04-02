@@ -5,10 +5,14 @@ import Header from '../Header/Header';
 const OrderMange = () => {
     const [orders, setOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         fetch('https://noboni-mart.herokuapp.com/order?email=' + loggedInUser.email)
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data)
+                setLoading(true)
+            })
     }, [])
     return (
         <div className='container'>
@@ -24,7 +28,7 @@ const OrderMange = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        { orders.length > 0 ?
+                        { loading && orders.length > 0 ?
                             orders.map(order =>
                                 <tr class="table-success">
                                     <td>{order.name}</td>
@@ -33,7 +37,15 @@ const OrderMange = () => {
                                 </tr>
                             ) 
                             :
-                            <h4 className="text-center mt-3 text-danger">You haven't placed any orders yet. Please order and come to this page.</h4> 
+                            <div className="text-center">
+                            {loading ?
+                                <h4 className="mt-1 text-danger">You haven't placed any orders yet. Please order and come to this page.</h4> 
+                                : 
+                                <div class="spinner-border text-danger" style={{ width: '2rem', height: '2rem', marginTop: '10%', marginLeft: '90%' }} role="status">
+                                </div>
+                            }
+                        </div>
+                            
                         }
                     </tbody>
                 </table>
