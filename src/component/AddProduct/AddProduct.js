@@ -51,7 +51,7 @@ const AddProduct = () => {
             <form className=" p-3 mt-2 row" onSubmit={handleSubmit(onSubmit)}>
                 <div className="col-md-6">
                     <label>Product Name: </label>
-                    <input className="form-control" name="name" placeholder="Enter Name" value={productUpload.title} ref={register({ required: true })} /> <br />
+                    <input className="form-control" name="name" placeholder="Enter Name" defaultValue={productUpload.title} ref={register({ required: true })} /> <br />
                     <label>Product wight: </label>
                     <input className="form-control" name="wight" placeholder="Enter wight" ref={register({ required: true })} /> <br />
                 </div>
