@@ -1,6 +1,13 @@
 #Create a NoboniMart E-Commerce Website by React
-*** Website Link:
-# https://nobonimart-auth.web.app/
+
+# ✽ NOBONIMART
+# ➢ Feature: User Panel, Add Product & Remove product, Product management, Google
+Auth, Private Route, API Data Load, User info update Etc.
+# ➢ Resource: HTML, CSS, React, React Route, NodeJS, MongoDB, Firebase, GitHub,
+Bootstrap & Etc.
+# ➢ GitHub Link: https://github.com/nayemk1999/noboni-mart
+# ➢ Website Link: https://nobonimart-auth.web.app/
+
 
 
 *Website Description:
